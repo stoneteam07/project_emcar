@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Usuarios</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li class="active">Usuarios</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Usuario</th>
+                            <th>Password</th>
+                            <th>Activo</th>
+                            <th>Fecha de creacion</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for usuario in usuarios %}
+                        <tr>
+                            <td><a href="{{ path('usuario_show', { 'id': usuario.id }) }}">{{ usuario.id }}</a></td>
+                            <td>{{ usuario.usuario }}</td>
+                            <td>{{ usuario.password }}</td>
+                            <td>{% if usuario.estado %}Si{% else %}No{% endif %}</td>
+                            <td>{% if usuario.fechaCreacion %}{{ usuario.fechaCreacion|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            <td>
+                                <a href="{{ path('usuario_show', { 'id': usuario.id }) }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ path('usuario_edit', { 'id': usuario.id }) }}"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="form-btns">
+                    <a href="{{ path('usuario_new') }}" class="btn btn-success btn-outline">Crear usuario</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

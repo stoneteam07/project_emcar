@@ -1,0 +1,101 @@
+AppBundle\Entity\Empleado:
+    type: entity
+    table: empleado
+    indexes:
+        IDX_D9D9BF52813AC380:
+            columns:
+                - cargo_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        matriculaCodigo:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: matricula_codigo
+        paterno:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        materno:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        nombre:
+            type: string
+            nullable: true
+            length: 70
+            options:
+                fixed: false
+        fechaCreacion:
+            type: datetime
+            nullable: true
+            column: fecha_creacion
+        usuarioId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: usuario_id
+        estado:
+            type: boolean
+            nullable: true
+        sexo:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: true
+        direccion:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+        celular:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+        telefono:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+        correoElectronico:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: correo_electronico
+        externo:
+            type: boolean
+            nullable: true
+    manyToOne:
+        cargo:
+            targetEntity: Cargo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cargo_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

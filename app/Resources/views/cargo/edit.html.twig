@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Editar cargo</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="{{path('cargo_index')}}">Cargos</a></li>
+                <li class="active">Editar</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                {{ form_start(edit_form) }}
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(edit_form.cargo)}}
+                            {{form_widget(edit_form.cargo, {'attr':{'class':'form-control'} })}}
+                        </div>
+                        <div class="form-group col-md-2 col-sm-4">
+                            {{form_label(edit_form.abrev)}}
+                            {{form_widget(edit_form.abrev, {'attr':{'class':'form-control'} })}}
+                        </div>
+                    </div>
+                    
+                    {{ form_widget(edit_form) }}
+                    <div class="form-btns">
+                        <input type="submit" value="Editar" class="btn btn-success btn-outline" />    
+                        <a href="{{ path('cargo_index') }}" class="btn btn-info btn-outline">Volver a cargos</a>
+                    </div>
+                    
+                {{ form_end(edit_form) }}
+                <div class="form-btn-eliminar">
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Eliminar" class="btn btn-danger btn-outline">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,1 @@
+//$('form :input').addClass('form-control');

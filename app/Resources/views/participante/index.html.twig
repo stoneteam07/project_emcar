@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Participantes</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li class="active">Participantes</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for participante in participantes %}
+                        <tr>
+                            <td><a href="{{ path('participante_show', { 'id': participante.id }) }}">{{ participante.id }}</a></td>
+                            <td>
+                                <a href="{{ path('participante_show', { 'id': participante.id }) }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ path('participante_edit', { 'id': participante.id }) }}"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="form-btns">
+                    <a href="{{ path('participante_new') }}">Crear participante</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

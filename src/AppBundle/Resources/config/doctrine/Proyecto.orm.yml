@@ -1,0 +1,110 @@
+AppBundle\Entity\Proyecto:
+    type: entity
+    table: proyecto
+    indexes:
+        IDX_6FD202B9DE734E51:
+            columns:
+                - cliente_id
+        IDX_6FD202B9DB38439E:
+            columns:
+                - usuario_id
+        IDX_6FD202B9B4EA3FC4:
+            columns:
+                - frecuencia_informe_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        descripcion:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        ubicacion:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        planoUbicacion:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: plano_ubicacion
+        estado:
+            type: boolean
+            nullable: true
+        fechaCreacion:
+            type: datetime
+            nullable: true
+            column: fecha_creacion
+        presupuestoInicial:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            column: presupuesto_inicial
+        fechaInicio:
+            type: date
+            nullable: true
+            column: fecha_inicio
+        fechaFin:
+            type: date
+            nullable: true
+            column: fecha_fin
+        prorroga1:
+            type: date
+            nullable: true
+        prorroga2:
+            type: date
+            nullable: true
+        prorroga3:
+            type: date
+            nullable: true
+    manyToOne:
+        cliente:
+            targetEntity: Cliente
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cliente_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        frecuenciaInforme:
+            targetEntity: FrecuenciaInforme
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                frecuencia_informe_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Editar empleado</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="{{path('empleado_index')}}">Empleados</a></li>
+                <li class="active">Editar</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                {{ form_start(edit_form) }}
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(edit_form.matriculaCodigo)}}
+                            {{form_widget(edit_form.matriculaCodigo, {'attr':{'class':'form-control'} })}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(edit_form.paterno)}}
+                            {{form_widget(edit_form.paterno, {'attr':{'class':'form-control'} })}}
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(edit_form.materno)}}
+                            {{form_widget(edit_form.materno, {'attr':{'class':'form-control'} })}}
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(edit_form.nombre)}}
+                            {{form_widget(edit_form.nombre, {'attr':{'class':'form-control'} })}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(edit_form.sexo)}}
+                            {{form_widget(edit_form.sexo, {'attr':{'class':'form-control'} })}}
+                        </div>
+                        <div class="form-group col-md-8 col-sm-6">
+                            {{form_label(edit_form.correoElectronico)}}
+                            {{form_widget(edit_form.correoElectronico, {'attr':{'class':'form-control'} })}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(edit_form.direccion)}}
+                            {{form_widget(edit_form.direccion, {'attr':{'class':'form-control'} })}}
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(edit_form.celular)}}
+                            {{form_widget(edit_form.celular, {'attr':{'class':'form-control'} })}}
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(edit_form.telefono)}}
+                            {{form_widget(edit_form.telefono, {'attr':{'class':'form-control'} })}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="checkbox checkbox-primary col-md-4 col-sm-6" style="padding-top:20px; padding-left:50px">
+                            {{form_widget(edit_form.externo, { 'attr': {'style':'font-weight: bold;'} })}}
+                            <label for="appbundle_empleado_externo" >El empleado es externo</label>
+                        </div>
+                        <div class="checkbox checkbox-primary col-md-4 col-sm-6" style="padding-top:40px; padding-left:50px">
+                            {{form_widget(edit_form.estado, { 'attr': {'style':'font-weight: bold;'} })}}
+                            <label for="appbundle_empleado_estado" >El empleado esta activo</label>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(edit_form.cargo)}}
+                            {{form_widget(edit_form.cargo, {'attr':{'class':'form-control'} })}}
+                        </div>
+                    </div>
+                    {{ form_widget(edit_form) }}
+                    <div class="form-btns">
+                        <input type="submit" value="Editar" class="btn btn-success btn-outline" />
+                        <a href="{{ path('empleado_index') }}" class="btn btn-info btn-outline">Volver a empleados</a>
+                    </div>
+                    <div class="form-btn-eliminar">
+                        {{ form_start(delete_form) }}
+                            <input type="submit" value="Eliminar" class="btn btn-danger btn-outline">
+                        {{ form_end(delete_form) }}
+                    </div>
+                    
+                {{ form_end(edit_form) }}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

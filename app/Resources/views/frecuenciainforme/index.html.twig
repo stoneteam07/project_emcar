@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Frecuencia de Informes</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li class="active">Frecuencia de informes</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Frecuencia de informe</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for frecuenciaInforme in frecuenciaInformes %}
+                        <tr>
+                            <td><a href="{{ path('frecuenciainforme_show', { 'id': frecuenciaInforme.id }) }}">{{ frecuenciaInforme.id }}</a></td>
+                            <td>{{ frecuenciaInforme.frecuenciaInforme }}</td>
+                            <td>
+                                <a href="{{ path('frecuenciainforme_show', { 'id': frecuenciaInforme.id }) }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ path('frecuenciainforme_edit', { 'id': frecuenciaInforme.id }) }}"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="form-btns">
+                    <a href="{{ path('frecuenciainforme_new') }}" class="btn btn-success btn-outline">Crear nueva frecuencia</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

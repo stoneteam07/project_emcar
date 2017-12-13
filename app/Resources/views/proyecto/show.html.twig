@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Proyecto</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="{{path('proyecto_index')}}">Proyectos</a></li>
+                <li class="active">Proyecto</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="white-box">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ proyecto.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre</th>
+                            <td>{{ proyecto.nombre }}</td>
+                        </tr>
+                        <tr>
+                            <th>Descripcion</th>
+                            <td>{{ proyecto.descripcion }}</td>
+                        </tr>
+                        <tr>
+                            <th>Ubicacion</th>
+                            <td>{{ proyecto.ubicacion }}</td>
+                        </tr>
+                        <tr>
+                            <th>Planoubicacion</th>
+                            <td>{{ proyecto.planoUbicacion }}</td>
+                        </tr>
+                        <tr>
+                            <th>Estado Activo</th>
+                            <td>{% if proyecto.estado %}Si{% else %}No{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Fechacreacion</th>
+                            <td>{% if proyecto.fechaCreacion %}{{ proyecto.fechaCreacion|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Presupuestoinicial</th>
+                            <td>{{ proyecto.presupuestoInicial }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fechainicio</th>
+                            <td>{% if proyecto.fechaInicio %}{{ proyecto.fechaInicio|date('d-m-Y') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Fechafin</th>
+                            <td>{% if proyecto.fechaFin %}{{ proyecto.fechaFin|date('d-m-Y') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Prorroga1</th>
+                            <td>{% if proyecto.prorroga1 %}{{ proyecto.prorroga1|date('d-m-Y') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Prorroga2</th>
+                            <td>{% if proyecto.prorroga2 %}{{ proyecto.prorroga2|date('d-m-Y') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Prorroga3</th>
+                            <td>{% if proyecto.prorroga3 %}{{ proyecto.prorroga3|date('d-m-Y') }}{% endif %}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="form-btns">
+                    <a href="{{ path('proyecto_edit', { 'id': proyecto.id }) }}" class="btn btn-success btn-outline">Editar</a>
+                    <a href="{{ path('proyecto_index') }}" class="btn btn-info btn-outline">Volver a proyectos</a>
+                </div>
+
+                <div class="form-btn-eliminar">
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Eliminar" class="btn btn-danger btn-outline">
+                    {{ form_end(delete_form) }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

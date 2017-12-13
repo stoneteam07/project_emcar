@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Proyectos</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li class="active">Proyectos</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Ubicacion</th>
+                            <th>Plano ubicacion</th>
+                            <th>Estado</th>
+                            <th>Fecha inicio</th>
+                            <th>Fecha fin</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for proyecto in proyectos %}
+                        <tr>
+                            <td><a href="{{ path('proyecto_show', { 'id': proyecto.id }) }}">{{ proyecto.id }}</a></td>
+                            <td>{{ proyecto.nombre }}</td>
+                            <td>{{ proyecto.descripcion }}</td>
+                            <td>{{ proyecto.ubicacion }}</td>
+                            <td>{{ proyecto.planoUbicacion }}</td>
+                            <td>{% if proyecto.estado %}Si{% else %}No{% endif %}</td>
+                            <td>{% if proyecto.fechaInicio %}{{ proyecto.fechaInicio|date('d-m-Y') }}{% endif %}</td>
+                            <td>{% if proyecto.fechaFin %}{{ proyecto.fechaFin|date('d-m-Y') }}{% endif %}</td>
+                            <td>
+                                <a href="{{ path('proyecto_show', { 'id': proyecto.id }) }}" data-toggle="tooltip" data-placement="top" data-title="Ver datos"><i class="fa fa-eye"></i></a>
+                                <a href="{{ path('proyecto_edit', { 'id': proyecto.id }) }}" data-toggle="tooltip" data-placement="top" data-title="Editar datos"><i class="fa fa-edit"></i></a>
+                                <a href="#" data-toggle="tooltip" data-placement="top" data-title="Participantes"><i class="fa fa-users"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+
+                <div class="form-btns">
+                    <a href="{{ path('proyecto_new') }}" class="btn btn-success btn-outline">Crear nuevo proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

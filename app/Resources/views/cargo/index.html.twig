@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Cargos</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li class="active">Cargos</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Cargo</th>
+                            <th>Abrev</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for cargo in cargos %}
+                        <tr>
+                            <td><a href="{{ path('cargo_show', { 'id': cargo.id }) }}">{{ cargo.id }}</a></td>
+                            <td>{{ cargo.cargo }}</td>
+                            <td>{{ cargo.abrev }}</td>
+                            <td>
+                                <a href="{{ path('cargo_show', { 'id': cargo.id }) }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ path('cargo_edit', { 'id': cargo.id }) }}"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="form-btns">
+                    <a href="{{ path('cargo_new') }}" class="btn btn-success btn-outline">Crear nuevo cargo</a>
+                </div>
+                   
+            </div>
+        </div>
+    </div>
+
+    
+{% endblock %}

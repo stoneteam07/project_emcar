@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Usuario</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="{{path('usuario_index')}}">Usuarios</a></li>
+                <li class="active">Usuario</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="white-box">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ usuario.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Usuario</th>
+                            <td>{{ usuario.usuario }}</td>
+                        </tr>
+                        <tr>
+                            <th>Password</th>
+                            <td>{{ usuario.password }}</td>
+                        </tr>
+                        <tr>
+                            <th>Usuario activo</th>
+                            <td>{% if usuario.estado %}Si{% else %}No{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de creacion</th>
+                            <td>{% if usuario.fechaCreacion %}{{ usuario.fechaCreacion|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-btns">
+                    <a href="{{ path('usuario_edit', { 'id': usuario.id }) }}" class="btn btn-success btn-outline">Editar</a>
+                    <a href="{{ path('usuario_index') }}" class="btn btn-info btn-outline">Volver a usuarios</a>
+                </div>
+                <div class="form-btn-eliminar">
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Eliminar" class="btn btn-danger btn-outline">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

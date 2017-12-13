@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Empleado</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="{{path('empleado_index')}}">Empleados</a></li>
+                <li class="active">Empleado</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="white-box">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ empleado.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Matricula codigo</th>
+                            <td>{{ empleado.matriculaCodigo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Paterno</th>
+                            <td>{{ empleado.paterno }}</td>
+                        </tr>
+                        <tr>
+                            <th>Materno</th>
+                            <td>{{ empleado.materno }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre</th>
+                            <td>{{ empleado.nombre }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de creacion</th>
+                            <td>{% if empleado.fechaCreacion %}{{ empleado.fechaCreacion|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Estado Activo</th>
+                            <td>{% if empleado.estado %}Si{% else %}No{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Sexo</th>
+                            <td>{{ empleado.sexo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Direccion</th>
+                            <td>{{ empleado.direccion }}</td>
+                        </tr>
+                        <tr>
+                            <th>Celular</th>
+                            <td>{{ empleado.celular }}</td>
+                        </tr>
+                        <tr>
+                            <th>Telefono</th>
+                            <td>{{ empleado.telefono }}</td>
+                        </tr>
+                        <tr>
+                            <th>Correo electronico</th>
+                            <td>{{ empleado.correoElectronico }}</td>
+                        </tr>
+                        <tr>
+                            <th>Externo</th>
+                            <td>{% if empleado.externo %}Si{% else %}No{% endif %}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="form-btns">
+                    <a href="{{ path('empleado_edit', { 'id': empleado.id }) }}" class="btn btn-success btn-outline">Editar</a>
+                    <a href="{{ path('empleado_index') }}" class="btn btn-info btn-outline">Volver a empleados</a>
+                </div>
+                <div class="form-btn-eliminar">
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Eliminar" class="btn btn-danger btn-outline">
+                    {{ form_end(delete_form) }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

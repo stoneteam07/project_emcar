@@ -1,0 +1,55 @@
+AppBundle\Entity\Cliente:
+    type: entity
+    table: cliente
+    indexes:
+        IDX_F41C9B25DB38439E:
+            columns:
+                - usuario_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        descripcion:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        estado:
+            type: boolean
+            nullable: true
+        fechaCreacion:
+            type: datetime
+            nullable: true
+            column: fecha_creacion
+        nitCi:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: nit_ci
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

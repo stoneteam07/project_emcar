@@ -1,0 +1,14 @@
+.form-btns{
+	border-top: 1px solid #EEEEEE;
+	margin-top: 10px;
+}
+
+.form-btn-eliminar{
+	margin-top: 4px;
+	margin-top: 2px;
+}
+
+.form-btns, .form-btn-eliminar{
+	text-align: right;
+	padding: 5px;
+}

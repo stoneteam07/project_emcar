@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Crear empleado</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="{{path('empleado_index')}}">Empleados</a></li>
+                <li class="active">Crear</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                {{ form_start(form) }}
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(form.matriculaCodigo)}}
+                            {{form_widget(form.matriculaCodigo, {'attr':{'class':'form-control'} })}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(form.paterno)}}
+                            {{form_widget(form.paterno, {'attr':{'class':'form-control'} })}}
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(form.materno)}}
+                            {{form_widget(form.materno, {'attr':{'class':'form-control'} })}}
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(form.nombre)}}
+                            {{form_widget(form.nombre, {'attr':{'class':'form-control'} })}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(form.sexo)}}
+                            {{form_widget(form.sexo, {'attr':{'class':'form-control'} })}}
+                        </div>
+                        <div class="form-group col-md-8 col-sm-6">
+                            {{form_label(form.correoElectronico)}}
+                            {{form_widget(form.correoElectronico, {'attr':{'class':'form-control'} })}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(form.direccion)}}
+                            {{form_widget(form.direccion, {'attr':{'class':'form-control'} })}}
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(form.celular)}}
+                            {{form_widget(form.celular, {'attr':{'class':'form-control'} })}}
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(form.telefono)}}
+                            {{form_widget(form.telefono, {'attr':{'class':'form-control'} })}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="checkbox checkbox-primary col-md-4 col-sm-6" style="padding-top:20px; padding-left:50px">
+                            {{form_widget(form.externo, { 'attr': {'style':'font-weight: bold;'} })}}
+                            <label for="appbundle_empleado_externo" >El empleado es externo</label>
+                        </div>
+                        <div class="checkbox checkbox-primary col-md-4 col-sm-6" style="padding-top:40px; padding-left:50px">
+                            {{form_widget(form.estado, { 'attr': {'style':'font-weight: bold;'} })}}
+                            <label for="appbundle_empleado_estado" >El empleado esta activo</label>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            {{form_label(form.cargo)}}
+                            {{form_widget(form.cargo, {'attr':{'class':'form-control'} })}}
+                        </div>
+                    </div>
+                    {{ form_widget(form) }}
+                    <div class="form-btns">
+                        <input type="submit" value="Crear" class="btn btn-success btn-outline" />
+                        <a href="{{ path('empleado_index') }}" class="btn btn-info btn-outline">Volver a empleados</a>
+                    </div>
+                    
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Clientes</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li class="active">Clientes</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Cliente activo</th>
+                            <th>NIT/CI</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for cliente in clientes %}
+                        <tr>
+                            <td><a href="{{ path('cliente_show', { 'id': cliente.id }) }}">{{ cliente.id }}</a></td>
+                            <td>{{ cliente.nombre }}</td>
+                            <td>{{ cliente.descripcion }}</td>
+                            <td>{% if cliente.estado %}Si{% else %}No{% endif %}</td>
+                            <td>{{ cliente.nitCi }}</td>
+                            <td>
+                                
+                                <a href="{{ path('cliente_show', { 'id': cliente.id }) }}"><i class="fa fa-eye fa-3"></i></a>
+                            
+                                <a href="{{ path('cliente_edit', { 'id': cliente.id }) }}"><i class="fa fa-edit"></i></a>
+                                    
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="form-btns">
+                    <a href="{{ path('cliente_new') }}" class="btn btn-success btn-outline">Crear nuevo cliente</a>                    
+                </div>
+                
+                    
+            </div>
+        </div>
+    </div>
+
+    
+{% endblock %}
