@@ -1,0 +1,59 @@
+AppBundle\Entity\CategoriaMaterial:
+    type: entity
+    table: categoria_material
+    indexes:
+        categoria_material_id_idx:
+            columns:
+                - id
+        IDX_4DD29485DB38439E:
+            columns:
+                - usuario_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombreCategoria:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: nombre_categoria
+        descripcion:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        fechaCreacion:
+            type: datetime
+            nullable: true
+            column: fecha_creacion
+        subCategoria:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: sub_categoria
+        estado:
+            type: boolean
+            nullable: false
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

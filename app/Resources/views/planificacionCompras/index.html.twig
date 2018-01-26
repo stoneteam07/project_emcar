@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Planificación Económica de Compras</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li class="active">Planificación</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box">
+            	
+				
+				<div class="row">
+					<div class="col-md-6">
+						Proyecto:
+						<h1 class="text-blue"> {{proyecto.nombre}} </h1></div>
+					<div class="col-md-6">
+						Detalle: <br>
+						<table class="table-bordered">
+							<tr>
+								<th>Proyecto</th>
+								<td>{{proyecto.nombre}}</td>
+							</tr>
+							<tr>
+								<th>Presupuesto</th>
+								<td>{{proyecto.presupuestoInicial}}</td>
+							</tr>
+							<tr>
+								<th>Descripción</th>
+								<td>{{proyecto.descripcion}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="table-responsive">
+					<table class="table-bordered table-planification table-sm">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Descripción</th>
+								{% for mes in mesesLiteral %}
+									<th>{{mes}}</th>
+								{% endfor %}
+								<th>P. Unitario</th>
+								<th>Total</th>
+								{% for mes in mesesLiteral %}
+									<th>{{mes}}</th>
+								{% endfor %}
+							</tr>
+						</thead>
+						<tbody>
+							{% for m in materiales %}
+								<tr>
+									<td>{{loop.index}}</td>
+									<td>{{m.nombreMaterial}}</td>
+									{% for mes in meses %}
+										<td>
+											<input type="text" size="7" value="{{matriz[m.id][mes]}}" class="{{m.id}} texto">
+										</td>
+									{% endfor %}
+									<td><input type="text" size="7"></td>
+									<td></td>
+									{% for mes in meses %}
+										<td>
+											{{matriz[m.id][mes]}}
+										</td>
+									{% endfor %}
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

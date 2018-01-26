@@ -1,0 +1,9 @@
+.table-planification td{
+    padding: 0px;
+    margin: 0px;
+}
+
+input[type=text]{
+    text-align: right;
+    border-color: beige;
+}
